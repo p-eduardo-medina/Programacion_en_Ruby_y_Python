@@ -184,12 +184,48 @@ def letter_distance(str_1, str_2)
   arr = arr.map {|element| ((str_1[arr.index(element)]).ord - (str_2[arr.index(element)]).ord ).abs }
   return arr.reduce(0) { |sum, num| sum + num } + (str_1.length- str_2.length).abs
 end
-p letter_distance("house", "fly")
-p letter_distance("abcde", "Abcde") #➞ 32
+#p letter_distance("house", "fly")
+#p letter_distance("abcde", "Abcde") #➞ 32
 
+def numtochar(num)
+  alpbet=("a".."z").to_a
+  r = 0
+  s=""
+  q = num.to_i
+  loop do
+    (q,r = (q-1).divmod(26))
+    s.prepend(alpbet[r])
+    break if q.zero?
+  end
+  return s
+end
 
+def decrypt(str)
+  arr = ['']
+  v = 0
+  str.each_char do |char|
+    if char == '#'
+      arr.append('')
+      v+=1
+      next
+    end
+    arr[v]+=char
+  end
+  (arr[arr.length-1]=='')?(arr.pop):()
+  arr1 = arr.map do |element|
+    element = numtochar(element)
+  end
+  if str[str.length-1] != '#'
+    s = (arr[arr.length-1].split(//)).map { |e| e = numtochar(e)  }
+    arr1.pop()
+    arr1+=s
+  end
+  return arr1.join()
+end
 
-
+p decrypt("10#11#12")# ➞ "jkab"
+p decrypt("1326#") #➞ "axz"
+p decrypt("25#") #➞ "y"
 
 
 
