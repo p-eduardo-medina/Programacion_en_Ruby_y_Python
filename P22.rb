@@ -223,9 +223,23 @@ def decrypt(str)
   return arr1.join()
 end
 
-p decrypt("10#11#12")# ➞ "jkab"
-p decrypt("1326#") #➞ "axz"
-p decrypt("25#") #➞ "y"
+#p decrypt("10#11#12")# ➞ "jkab"
+#p decrypt("1326#") #➞ "axz"
+#p decrypt("25#") #➞ "y"
+
+def crearcaja(num,str1,str2)
+  arr = Array.new(num) { Array.new(num, 0) }
+  num.times do |i|
+    num.times do |j|
+      (i == 0 or j == 0 or i==(num-1) or j==(num-1))?(v= str1):(v = str2)
+      arr[i][j] = v
+    end
+  end
+  return arr
+end
+
+crearcaja(4,"$","A").each {|row| p row}
+
 
 
 

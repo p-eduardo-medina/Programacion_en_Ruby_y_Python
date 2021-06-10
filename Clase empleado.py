@@ -40,8 +40,34 @@ def atbash(txt):
         Newtxt+=sc
     return Newtxt
 
-print(atbash("apple")) #➞ "zkkov"
+#print(atbash("apple")) #➞ "zkkov"
 
-print(atbash("hello world")) #➞ "Svool dliow!
+#print(atbash("hello world")) #➞ "Svool dliow!
 
-print(atbash("Pedro Eduardo Medina Gonzalez"))
+#print(atbash("Pedro Eduardo Medina Gonzalez"))
+    
+"""
+Programa que verifica increment en cilumnas de matrices
+"""
+def can_see_stage(seats):
+    value = 1
+    for i in reversed(range(1,len(seats))):
+        for j in seats[i]:
+            v = 1 if ( j > (seats[i-1][seats[i].index(j)]) )  else 0
+            value*=v
+    return value==1
+
+print(can_see_stage([
+  [1, 0, 0],
+  [1, 1, 1],
+  [2, 2, 2]
+])) #➞ False
+
+
+print(can_see_stage([[1, 2, 3, 2, 1, 1], 
+[2, 4, 4, 3, 2, 2], 
+[5, 5, 5, 10, 4, 4], 
+[6, 6, 7, 6, 5, 5]]))#➞ True
+
+
+
