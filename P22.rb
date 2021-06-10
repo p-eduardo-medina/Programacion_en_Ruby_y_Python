@@ -237,9 +237,20 @@ def crearcaja(num,str1,str2)
   end
   return arr
 end
+#crearcaja(4,"$","A").each {|row| p row}
 
-crearcaja(4,"$","A").each {|row| p row}
-
+def sum_of_holes(num)
+  has = {0=>1, 4=>1, 6=>1, 8=>2, 9=>1 }
+  sum = 0
+  num.times { |i|
+    i+=1
+    (i.to_s).each_char{|char| [has.keys.include?(char.to_i)?(sum += has[char.to_i]):()] }
+  }
+  return sum
+end
+# p sum_of_holes(14)# ➞ 7
+# p sum_of_holes(4)# ➞ 1
+# p sum_of_holes(6259)# ➞ 12345
 
 
 
