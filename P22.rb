@@ -256,4 +256,30 @@ end
 
 
 
+
+def matrix_mult(m1, m2)
+  m = Array.new(m1.length) { Array.new(m1.length, 0) }
+	(m1.length).times{ |i|
+  m1.length.times{ |j|
+    m1.length.times{|k| m[i][j]+= m1[i][k]*m2[k][j] }
+     }
+  }
+  return m
+end
+
+#matrix_mult([[7, 5, 1],[2, 2, 2],[7, 5, 3]], [[2, 0, 0], [0, 2, 0],[0,0,2]]).each{|e| p e} # ➞ [[57, 59], [18, 18]]
+
+def quartic_equation(a, b, c)
+	# ax^4 + bx^2 +c
+  return 2*Math.sqrt( (-b + Math.sqrt(b*b-4*a*c) )/(2*a) )
+end
+
+p quartic_equation(1, -5, 4) #➞ 4
+p quartic_equation(4, 3, -1) #➞ 2
+
+
+
+
+
+
 # :P

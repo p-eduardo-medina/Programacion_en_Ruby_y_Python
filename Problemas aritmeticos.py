@@ -41,6 +41,65 @@ def Nnumerosprimos(num):
 
 
 #a = Nnumerosprimos(8)
-a = Numprimos(24)
-print(a)
+""" Función para determinar si un numero puede ser vist solo por 5's y 3's """  
+def only_5_and_3(n):       
+    bln = True
+    A = {}
+    B = n
+    while bln:
+        f = n
+        if ((n-5)%5 == 0 or (n-5)%3==0) and n>0:
+            n-=5
+            if 5 in A:
+                A[5]+=1
+            else:
+                A[5]=1
+            next
+        if ((n-3)%3==0 or (n-3)%5==0) and n>0:
+            n-=3  
+            if 3 in A:
+                A[3]+=1
+            else:
+                A[3]=1      
+            next
+        if f==n:
+            bln = False
+            return "No es valido"
+            A = {}
+        elif(n<=0):
+            bln = False        
+    Str = "\n\nEl numero " +str(B)+ " puede se visto como: "  + "<<<3x"+str(A[3])+"+5x"+str(A[5])+">>>"
+    return Str
+
+#print(only_5_and_3(26))
+"""  Función para hacer slit de un numero enterox """
+def num_split(num):
+    A = []
+    sign = num/abs(num) 
+    N = str(abs(num))
+    while len(N)>0:
+        A.append( int(sign*int(N[0])*10**(len(N)-1)))
+        N = N[1:]
+    return A
+#print(num_split(-8346510000))
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
