@@ -274,8 +274,33 @@ def quartic_equation(a, b, c)
   return 2*Math.sqrt( (-b + Math.sqrt(b*b-4*a*c) )/(2*a) )
 end
 
-p quartic_equation(1, -5, 4) #➞ 4
-p quartic_equation(4, 3, -1) #➞ 2
+#p quartic_equation(1, -5, 4) #➞ 4
+#p quartic_equation(4, 3, -1) #➞ 2
+
+def is_prim_pyth_triple(arr)
+  suma = 0
+  bln = 1
+	arr.each{ |v| (v != arr.max)?(suma+= v**2):(suma+=0) }
+  ((arr.max)**2 == suma)?(bln *= 1):(bln*=0)
+  pp=[]
+  if !bln.zero?
+    arr.each{ |x|
+    x.times{ |i|
+      #p [i+1,x,(x % (i+1) ==0 and (i+1)!=x )]
+      (x % (i+1) ==0 and (i+1)!=x )?(pp << (i+1)):() } }
+    pp.delete_if{ |variable| variable==1  }
+    pp.each{ |element| (pp.count(element)>1 )?(bln*=0):(bln*=1)}
+    (bln.zero?)?(return false):(return true)
+  else
+    return false
+  end
+
+end
+
+#p is_prim_pyth_triple([4, 5, 3])# ➞ true
+#p is_prim_pyth_triple([7, 12, 13])# ➞ false
+#p is_prim_pyth_triple([39, 15, 36])# ➞ false
+
 
 
 
