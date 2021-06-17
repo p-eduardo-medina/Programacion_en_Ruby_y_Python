@@ -297,9 +297,89 @@ def is_prim_pyth_triple(arr)
 
 end
 
-#p is_prim_pyth_triple([4, 5, 3])# ➞ true
+#p is_prim_pyth_triple([4, 5, 3])# ➞ rue
 #p is_prim_pyth_triple([7, 12, 13])# ➞ false
 #p is_prim_pyth_triple([39, 15, 36])# ➞ false
+
+
+def is_heteromecic(n)
+  bln = false
+	(n+1).times{ |i| ( i*(i+1)==n )?(bln = true):() }
+  return bln
+end
+#p is_heteromecic(110)# ➞ true
+
+#p is_heteromecic(136)# ➞ false
+
+#p is_heteromecic(156) #➞ true
+
+def express_factors(n)
+  pn = Hash[]
+  while n%2==0
+    (pn.keys.include?(2))?(pn[2]+=1):(pn[2]=1)
+    n/=2
+  end
+  f=3
+  while f*f<=n
+    if n%f==0
+      (pn.keys.include?(f))?(pn[f]+=1):(pn[f]=1)
+      n/=f
+    else
+      f+=2
+    end
+  end
+  if n != 1
+    (pn.keys.include?(n))?(pn[n]+=1):(pn[n]=1)
+  end
+  s = "El numero es el producto de: "
+  pn.each { |k,v| s+= (k.to_s+"^"+v.to_s+"*")}
+  return [s[0..(s.length-2)],pn]
+end
+#p express_factors(100)
+
+def firstprimenum(n)
+  pp = []
+  i=0
+  while pp.length < n
+   i+=1
+   ((express_factors(i)[1]).keys.length == 1 and (express_factors(i)[1]).values[0]==1 )?(pp << express_factors(i)[1].keys[0] ):()
+  end
+ return pp
+end
+
+#p firstprimenum(5)
+
+
+def factorial(n)
+  r = 1
+  (n==1)?(return r):(r *= (n*factorial(n-1)))
+end
+def kempner(n)
+  bln = true
+  i=1
+	while bln
+    if factorial(i)%n >0
+      i+=1
+    else
+      bln=false
+    end
+  end
+  return i
+end
+
+def itosis(i,s)
+  arr = []
+  while i>0
+    arr << i%s
+    i = i.divmod(s)[0]
+  end
+  return arr.reverse
+end
+
+#p kempner(6)
+
+
+
 
 
 
