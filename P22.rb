@@ -378,7 +378,39 @@ end
 
 #p kempner(6)
 
+def gauss(num)
+  (num.length < 2)?(num << 0):()
+	return ((num[0]*(num[0]+1)/2) - (num[1]*(num[1]+1)/2) ).abs
+end
 
+#p gauss([100])
+
+def number_to_tittle(s)
+	alb = ('A'..'Z').to_a
+  arr = []
+  while s > 0
+    s, r = s.divmod(26)
+    arr << r
+  end
+  (!s.zero?)?(arr << s):()
+  arr = arr.reverse
+  return arr.map { |e| e = alb[e-1] }
+end
+#number_to_tittle(12346)
+
+def title_to_number(s)
+	alb = ('A'..'Z').to_a
+  arr = []
+  s.each_char {|c| c=c.upcase()
+   arr << alb.index(c)+1}
+  sum=0
+  arr = arr.reverse
+  (arr.length).times {|i| sum += arr[i]*26**i}
+  return sum
+end
+# p title_to_number("A")# ➞ 1
+# p title_to_number("R") #➞ 18
+p title_to_number("BCG") #➞ 28
 
 
 
