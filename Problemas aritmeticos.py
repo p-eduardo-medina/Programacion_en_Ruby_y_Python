@@ -82,9 +82,46 @@ def num_split(num):
         N = N[1:]
     return A
 #print(num_split(-8346510000))
-        
-        
-        
+
+
+def who_won(board):	
+    par = ["O","X"]
+    winner=""
+    bol = 0
+    for p in par:
+        bol = 0
+        for i in range(3):
+            b = 1 if (p == board[0][i] and board[0][i]==board[1][i] and board[1][i] == board[2][i]) else 0              
+            bol +=b
+        for i in range(3):
+            b =1 if (p == board[i][0] and board[i][0] == board[i][1] and board[i][1] == board[i][2]) else 0
+            bol+=b
+        b=1 if(p ==board[i][0] and (board[0][0]==board[1][1] and board[1][1] == board[2][2])or(p ==board[i][0] and board[0][2]==board[1][1] and board[1][1] == board[2][0])) else 0        
+        bol+=b
+        if bol>0:
+            winner = p
+    return winner
+
+
+"""
+print("El ganador es:" + who_won([
+  ["O", "X", "O"],
+  ["X", "X", "O"],
+  ["O", "X", "X"]
+]) )# ➞ "X"
+    
+print("El ganador es:" + who_won([
+  ["O", "O", "X"],
+  ["X", "O", "X"],
+  ["O", "O", "O"]
+]))# ➞ "X"
+print("El ganador es:" + who_won([
+  ["O", "O", "X"],
+  ["O", "X", "X"],
+  ["X", "O", "O"]
+]))# ➞ "X"
+"""
+
 
         
         
